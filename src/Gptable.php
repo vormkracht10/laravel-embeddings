@@ -55,8 +55,8 @@ trait Gptable
         }
 
         dispatch((new Gpt::$makeGptableJob($models))
-                ->onQueue($models->first()->syncWithGptUsingQueue())
-                ->onConnection($models->first()->syncWithGptUsing()));
+            ->onQueue($models->first()->syncWithGptUsingQueue())
+            ->onConnection($models->first()->syncWithGptUsing()));
     }
 
     /**
@@ -128,7 +128,6 @@ trait Gptable
     /**
      * Modify the collection of models being made gptable.
      *
-     * @param  \Illuminate\Support\Collection  $models
      * @return \Illuminate\Support\Collection
      */
     public function makeGptableUsing(BaseCollection $models)
@@ -139,7 +138,6 @@ trait Gptable
     /**
      * Modify the query used to retrieve models when making all of the models gptable.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
     protected function makeAllGptableUsing(EloquentBuilder $query)

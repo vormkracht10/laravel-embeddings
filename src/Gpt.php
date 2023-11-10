@@ -24,7 +24,6 @@ class Gpt
     /**
      * Specify the job class that should make models searchable.
      *
-     * @param  string  $class
      * @return void
      */
     public static function makeGptableUsing(string $class)
@@ -35,7 +34,6 @@ class Gpt
     /**
      * Specify the job class that should remove models from the search index.
      *
-     * @param  string  $class
      * @return void
      */
     public static function removeFromGptUsing(string $class)

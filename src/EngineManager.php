@@ -2,7 +2,6 @@
 
 namespace Vormkracht10\LaravelGpt;
 
-use Exception;
 use Illuminate\Support\Manager;
 use Vormkracht10\LaravelGpt\Engines\OpenAiEngine;
 
