@@ -7,9 +7,9 @@ return [
     'queue' => true,
     'database' => [
         'connection' => env('GPT_DATABASE_CONNECTION', env('DB_CONNECTION', 'mysql')),
-        'table' => env('GPT_DB_TABLE', 'gpt')
+        'table' => env('GPT_DB_TABLE', 'gpt'),
     ],
     'openai' => [
-        'key' => env('OPENAI_API_KEY')
-    ]
+        'key' => env('OPENAI_API_KEY'),
+    ],
 ];

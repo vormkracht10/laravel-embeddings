@@ -7,9 +7,8 @@ interface EngineInterface
     /**
      * Update the given model in the index.
      *
-     * @param  string $content
+     * @param  string  $content
      * @return array $embedding
      */
     public function embed($models): array;
-
 }

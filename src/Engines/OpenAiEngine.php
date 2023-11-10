@@ -8,17 +8,19 @@ class OpenAiEngine implements EngineInterface
 {
     private $apiUrl = 'https://api.openai.com/v1';
 
-    public function __construct(public string $key, public string $model = 'text-embedding-ada-002') {
+    public function __construct(public string $key, public string $model = 'text-embedding-ada-002')
+    {
 
     }
 
-    public function embed($content) : array {
+    public function embed($content): array
+    {
 
         dd('here we go', $content);
         $response = Http::withToken($this->key)
-            ->post($this->apiUrl . '/embeddings', [
+            ->post($this->apiUrl.'/embeddings', [
                 'input' => $content,
-                'model' => $this->model
+                'model' => $this->model,
             ])
             ->throw()
             ->json();
@@ -31,7 +33,6 @@ class OpenAiEngine implements EngineInterface
      *
      * @param  \Illuminate\Database\Eloquent\Collection  $models
      * @return void
-     *
      */
     public function update($models)
     {
@@ -46,7 +47,7 @@ class OpenAiEngine implements EngineInterface
 
             return [
                 'objectID' => $model->getGptKey(),
-                'content' => $contentString
+                'content' => $contentString,
             ];
         })->filter()->values()->all();
 
@@ -55,18 +56,19 @@ class OpenAiEngine implements EngineInterface
         }
     }
 
-    private function saveObjects($objects) {
+    private function saveObjects($objects)
+    {
         foreach ($objects as $object) {
-            
+
             $embed = $this->embed($object['content']);
 
             DB::connection(config('gpt.database.connection'))
                 ->table(config('gpt.database.table'))
                 ->updateOrInsert([
-                    'foreign_id' => $object['objectID']
+                    'foreign_id' => $object['objectID'],
                 ], [
                     'content' => $object['content'],
-                    'embed' => $embed
+                    'embed' => $embed,
                 ]);
         }
     }
