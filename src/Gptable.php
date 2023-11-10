@@ -148,6 +148,16 @@ trait Gptable
     }
 
     /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableString()
+    {
+        return implode(', ', $this->toArray());
+    }
+
+    /**
      * Make the given model instance gptable.
      *
      * @return void

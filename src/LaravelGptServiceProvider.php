@@ -25,8 +25,11 @@ class LaravelGptServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/gpt.php' => $this->app['path.config'].DIRECTORY_SEPARATOR.'gpt.php',
-            ]);
+                __DIR__.'/../config/gpt.php' => config_path('gpt.php'),
+            ], 'laravel-gpt-config');
+            $this->publishes([
+                __DIR__.'/../database/migrations/' => database_path('migrations')
+            ], 'laravel-gpt-migrations');
         }
     }
 }
