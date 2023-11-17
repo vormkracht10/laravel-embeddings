@@ -261,7 +261,7 @@ trait Gptable
      */
     public function toGptableString()
     {
-        return strip_tags(implode(', ', $this->contentable->toArray()) . implode(', ', $this->toArray()));
+        return strip_tags(implode(', ', $this->contentable->toArray()).implode(', ', $this->toArray()));
     }
 
     /**

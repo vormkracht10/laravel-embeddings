@@ -61,14 +61,14 @@ class OpenAiEngine implements EngineInterface
         foreach ($objects as $object) {
 
             $embed = $this->embed($object['content']);
-            
+
             DB::connection(config('gpt.database.connection'))
                 ->table(config('gpt.database.table'))
                 ->updateOrInsert([
                     'foreign_id' => $object['objectID'],
                 ], [
                     'content' => $object['content'],
-                    'embedding' => '['. implode(',', $embed) .']',
+                    'embedding' => '['.implode(',', $embed).']',
                 ]);
         }
     }
