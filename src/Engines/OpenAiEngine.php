@@ -3,6 +3,8 @@
 namespace Vormkracht10\LaravelGpt\Engines;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class OpenAiEngine implements EngineInterface
 {
@@ -15,8 +17,6 @@ class OpenAiEngine implements EngineInterface
 
     public function embed($content): array
     {
-
-        dd('here we go', $content);
         $response = Http::withToken($this->key)
             ->post($this->apiUrl.'/embeddings', [
                 'input' => $content,
@@ -41,7 +41,7 @@ class OpenAiEngine implements EngineInterface
         }
 
         $objects = $models->map(function ($model) {
-            if (empty($contentString = $model->toSearchableString())) {
+            if (empty($contentString = $model->toGptableString())) {
                 return;
             }
 
@@ -61,14 +61,14 @@ class OpenAiEngine implements EngineInterface
         foreach ($objects as $object) {
 
             $embed = $this->embed($object['content']);
-
+            
             DB::connection(config('gpt.database.connection'))
                 ->table(config('gpt.database.table'))
                 ->updateOrInsert([
                     'foreign_id' => $object['objectID'],
                 ], [
                     'content' => $object['content'],
-                    'embed' => $embed,
+                    'embedding' => '['. implode(',', $embed) .']',
                 ]);
         }
     }
