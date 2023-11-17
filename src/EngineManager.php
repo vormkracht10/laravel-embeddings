@@ -40,7 +40,7 @@ class EngineManager extends Manager
     protected function ensureOpenAiIsConfigured()
     {
         if (empty(config('gpt.openai.key'))) {
-            throw new \Exception(__('Please fiill the :config key.', ['config' => 'gpt.openai.key']));
+            throw new \Exception(__('Please fill the :config key.', ['config' => 'gpt.openai.key']));
         }
     }
 
