@@ -1,4 +1,4 @@
-#  Gpt your models for AI Q&A. 
+#  Create an index of embeddings for an Eloquent model using a PostgreSQL vector database
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/vormkracht10/laravel-gpt.svg?style=flat-square)](https://packagist.org/packages/vormkracht10/laravel-gpt)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/vormkracht10/laravel-gpt/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/vormkracht10/laravel-gpt/actions?query=workflow%3Arun-tests+branch%3Amain)
