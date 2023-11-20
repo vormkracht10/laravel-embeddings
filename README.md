@@ -5,7 +5,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/vormkracht10/laravel-gpt/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/vormkracht10/laravel-gpt/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/vormkracht10/laravel-gpt.svg?style=flat-square)](https://packagist.org/packages/vormkracht10/laravel-gpt)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+OpenAI's text embeddings measure the relatedness of text strings. Using this package you can save embeddings automatically for your Eloquent model in a PostgreSQL vector database. To use the embeddings in your AI requests to the OpenAI API endpoints.
 
 ## Installation
 
