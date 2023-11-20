@@ -1,9 +1,9 @@
 #  Create embeddings for an Eloquent model (using a PostgreSQL vector database)
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/vormkracht10/laravel-eloquent-embeddings-openai .svg?style=flat-square)](https://packagist.org/packages/vormkracht10/laravel-eloquent-embeddings-openai )
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/vormkracht10/laravel-eloquent-embeddings-openai /run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/vormkracht10/laravel-eloquent-embeddings-openai /actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/vormkracht10/laravel-eloquent-embeddings-openai /fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/vormkracht10/laravel-gpt/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/vormkracht10/laravel-gpt.svg?style=flat-square)](https://packagist.org/packages/vormkracht10/laravel-gpt)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/vormkracht10/laravel-eloquent-embeddings-openai.svg?style=flat-square)](https://packagist.org/packages/vormkracht10/laravel-eloquent-embeddings-openai)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/vormkracht10/laravel-eloquent-embeddings-openai/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/vormkracht10/laravel-eloquent-embeddings-openai/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/vormkracht10/laravel-eloquent-embeddings-openai/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/vormkracht10/laravel-eloquent-embeddings-openai /actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/vormkracht10/laravel-eloquent-embeddings-openai.svg?style=flat-square)](https://packagist.org/packages/vormkracht10/laravel-eloquent-embeddings-openai)
 
 OpenAI's text embeddings measure the relatedness of text strings. Using this package you can save embeddings automatically for your Eloquent model in a PostgreSQL vector database. To use the embeddings in your AI requests to the OpenAI API endpoints.
 
