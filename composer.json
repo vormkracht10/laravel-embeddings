@@ -3,10 +3,9 @@
     "description": "Create embeddings for an Eloquent model (using a PostgreSQL vector database)",
     "keywords": [
         "vormkracht10",
-        "laravel",
-        "laravel-gpt"
+        "laravel"
     ],
-    "homepage": "https://github.com/vormkracht10/laravel-gpt",
+    "homepage": "https://github.com/vormkracht10/laravel-eloquent-embeddings-openai",
     "license": "MIT",
     "authors": [
         {
