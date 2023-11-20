@@ -1,6 +1,6 @@
 {
-    "name": "vormkracht10/laravel-gpt",
-    "description": " Gpt your models for AI Q&A. ",
+    "name": "vormkracht10/laravel-eloquent-embeddings-openai",
+    "description": "Create embeddings for an Eloquent model (using a PostgreSQL vector database)",
     "keywords": [
         "vormkracht10",
         "laravel",
