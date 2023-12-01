@@ -251,7 +251,7 @@ trait Embeddable
      */
     public function toEmbeddableString()
     {
-        return strip_tags(implode(', ', $this->contentable->toArray()).implode(', ', $this->toArray()));
+        return strip_tags(implode(', ', $this->toArray()));
     }
 
     /**
