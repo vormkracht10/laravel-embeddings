@@ -3,6 +3,7 @@
 namespace Vormkracht10\Embedding;
 
 use Illuminate\Support\ServiceProvider;
+use Vormkracht10\Embedding\Commands\ImportCommand;
 
 class EmbeddingServiceProvider extends ServiceProvider
 {
@@ -24,6 +25,10 @@ class EmbeddingServiceProvider extends ServiceProvider
     public function boot()
     {
         if ($this->app->runningInConsole()) {
+            $this->commands([
+                ImportCommand::class
+            ]);
+
             $this->publishes([
                 __DIR__.'/../config/embed.php' => config_path('embed.php'),
             ], 'laravel-embed-config');

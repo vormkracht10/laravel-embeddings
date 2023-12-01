@@ -12,4 +12,19 @@ return [
     'openai' => [
         'key' => env('OPENAI_API_KEY'),
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Chunk Sizes
+    |--------------------------------------------------------------------------
+    |
+    | These options allow you to control the maximum chunk size when you are
+    | mass importing data into the embed engine. This allows you to fine
+    | tune each of these chunk sizes based on the power of the servers.
+    |
+    */
+    'chunk' => [
+        'embeddable' => 500,
+        'unembeddable' => 500,
+    ],
 ];

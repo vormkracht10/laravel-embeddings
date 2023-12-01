@@ -15,6 +15,8 @@ trait Embeddable
      */
     public static function bootEmbeddable()
     {
+        static::addGlobalScope(new EmbeddableScope);
+
         static::observe(new ModelObserver);
 
         (new static)->registerEmbeddableMacros();
