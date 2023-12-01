@@ -26,7 +26,7 @@ class EmbeddingServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
-                ImportCommand::class
+                ImportCommand::class,
             ]);
 
             $this->publishes([
