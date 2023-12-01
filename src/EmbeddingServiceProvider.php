@@ -1,10 +1,10 @@
 <?php
 
-namespace Vormkracht10\LaravelGpt;
+namespace Vormkracht10\Embedding;
 
 use Illuminate\Support\ServiceProvider;
 
-class LaravelGptServiceProvider extends ServiceProvider
+class EmbeddingServiceProvider extends ServiceProvider
 {
     /**
      * Register the service provider.
@@ -13,7 +13,7 @@ class LaravelGptServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/gpt.php', 'gpt');
+        $this->mergeConfigFrom(__DIR__.'/../config/embed.php', 'embed');
     }
 
     /**
@@ -25,11 +25,11 @@ class LaravelGptServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/gpt.php' => config_path('gpt.php'),
-            ], 'laravel-gpt-config');
+                __DIR__.'/../config/embed.php' => config_path('embed.php'),
+            ], 'laravel-embed-config');
             $this->publishes([
                 __DIR__.'/../database/migrations/' => database_path('migrations'),
-            ], 'laravel-gpt-migrations');
+            ], 'laravel-embed-migrations');
         }
     }
 }

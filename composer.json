@@ -32,13 +32,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Vormkracht10\\LaravelGpt\\": "src/",
-            "Vormkracht10\\LaravelGpt\\Database\\Factories\\": "database/factories/"
+            "Vormkracht10\\Embedding\\": "src/",
+            "Vormkracht10\\Embedding\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Vormkracht10\\LaravelGpt\\Tests\\": "tests/"
+            "Vormkracht10\\Embedding\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -58,10 +58,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Vormkracht10\\LaravelGpt\\LaravelGptServiceProvider"
+                "Vormkracht10\\Embedding\\EmbeddingServiceProvider"
             ],
             "aliases": {
-                "LaravelGpt": "Vormkracht10\\LaravelGpt\\Facades\\LaravelGpt"
+                "Embedding": "Vormkracht10\\Embedding\\Facades\\Embedding"
             }
         }
     },

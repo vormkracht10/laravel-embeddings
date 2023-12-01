@@ -1,6 +1,6 @@
 <?php
 
-namespace Vormkracht10\LaravelGpt\Engines;
+namespace Vormkracht10\Embedding\Engines;
 
 interface EngineInterface
 {

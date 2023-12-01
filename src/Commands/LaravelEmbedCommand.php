@@ -1,12 +1,12 @@
 <?php
 
-namespace Vormkracht10\LaravelGpt\Commands;
+namespace Vormkracht10\Embedding\Commands;
 
 use Illuminate\Console\Command;
 
-class LaravelGptCommand extends Command
+class LaravelEmbedCommand extends Command
 {
-    public $signature = 'laravel-gpt';
+    public $signature = 'laravel-embed';
 
     public $description = 'My command';
 

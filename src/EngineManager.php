@@ -1,9 +1,9 @@
 <?php
 
-namespace Vormkracht10\LaravelGpt;
+namespace Vormkracht10\Embedding;
 
 use Illuminate\Support\Manager;
-use Vormkracht10\LaravelGpt\Engines\OpenAiEngine;
+use Vormkracht10\Embedding\Engines\OpenAiEngine;
 
 class EngineManager extends Manager
 {
@@ -11,7 +11,7 @@ class EngineManager extends Manager
      * Get a driver instance.
      *
      * @param  string|null  $name
-     * @return \Vormkracht10\Gpt\Engines\EngineInterface
+     * @return \Vormkracht10\Embedding\Engines\EngineInterface
      */
     public function engine($name = null)
     {
@@ -21,13 +21,13 @@ class EngineManager extends Manager
     /**
      * Create an Algolia engine instance.
      *
-     * @return \Vormkracht10\Gpt\Engines\OpenAiEngine
+     * @return \Vormkracht10\Embedding\Engines\OpenAiEngine
      */
     public function createOpenAiDriver()
     {
         $this->ensureOpenAiIsConfigured();
 
-        return new OpenAiEngine(config('gpt.openai.key'));
+        return new OpenAiEngine(config('embed.openai.key'));
     }
 
     /**
@@ -39,8 +39,8 @@ class EngineManager extends Manager
      */
     protected function ensureOpenAiIsConfigured()
     {
-        if (empty(config('gpt.openai.key'))) {
-            throw new \Exception(__('Please fill the :config key.', ['config' => 'gpt.openai.key']));
+        if (empty(config('embed.openai.key'))) {
+            throw new \Exception(__('Please fill the :config key.', ['config' => 'embed.openai.key']));
         }
     }
 
@@ -57,13 +57,13 @@ class EngineManager extends Manager
     }
 
     /**
-     * Get the default Gpt driver name.
+     * Get the default Embed driver name.
      *
      * @return string
      */
     public function getDefaultDriver()
     {
-        if (is_null($driver = config('gpt.driver'))) {
+        if (is_null($driver = config('embed.driver'))) {
             return 'openai';
         }
 
