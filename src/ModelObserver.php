@@ -1,6 +1,6 @@
 <?php
 
-namespace Vormkracht10\LaravelGpt;
+namespace Vormkracht10\Embedding;
 
 use Closure;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -23,7 +23,7 @@ class ModelObserver
     protected static $syncingDisabledFor = [];
 
     /**
-     * Indicates if Gpt will keep soft deleted records in the gpt indexes.
+     * Indicates if Embed will keep soft deleted records in the embed indexes.
      *
      * @var bool
      */
@@ -36,7 +36,7 @@ class ModelObserver
      */
     public function __construct()
     {
-        $this->usingSoftDeletes = Config::get('gpt.soft_delete', false);
+        $this->usingSoftDeletes = Config::get('embed.soft_delete', false);
     }
 
     /**
@@ -82,17 +82,17 @@ class ModelObserver
      */
     public function saved($model)
     {
-        if (! $this->forceSaving && ! $model->gptIndexShouldBeUpdated()) {
+        if (! $this->forceSaving && ! $model->embedIndexShouldBeUpdated()) {
             return;
         }
 
-        if (! $model->shouldBeGptable()) {
-            $model->ungptable();
+        if (! $model->shouldBeEmbeddable()) {
+            $model->unembeddable();
 
             return;
         }
 
-        $model->gptable();
+        $model->embeddable();
     }
 
     /**
@@ -112,7 +112,7 @@ class ModelObserver
                 $this->saved($model);
             });
         } else {
-            $model->ungptable();
+            $model->unembeddable();
         }
     }
 
@@ -128,7 +128,7 @@ class ModelObserver
             return;
         }
 
-        $model->ungptable();
+        $model->unembeddable();
     }
 
     /**

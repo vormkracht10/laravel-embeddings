@@ -1,3 +1,3 @@
 # Changelog
 
-All notable changes to `laravel-gpt` will be documented in this file.
+All notable changes to `laravel-embeddings` will be documented in this file.

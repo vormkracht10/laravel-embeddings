@@ -1,10 +1,10 @@
 <?php
 
-namespace Vormkracht10\LaravelGpt\Tests;
+namespace Vormkracht10\Embedding\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Vormkracht10\LaravelGpt\LaravelGptServiceProvider;
+use Vormkracht10\Embedding\EmbeddingServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -13,14 +13,14 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Vormkracht10\\LaravelGpt\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'Vormkracht10\\Embedding\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 
     protected function getPackageProviders($app)
     {
         return [
-            LaravelGptServiceProvider::class,
+            EmbeddingServiceProvider::class,
         ];
     }
 
@@ -29,7 +29,7 @@ class TestCase extends Orchestra
         config()->set('database.default', 'testing');
 
         /*
-        $migration = include __DIR__.'/../database/migrations/create_laravel-gpt_table.php.stub';
+        $migration = include __DIR__.'/../database/migrations/create_laravel-embed_table.php.stub';
         $migration->up();
         */
     }

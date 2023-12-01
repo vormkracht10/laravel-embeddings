@@ -1,6 +1,6 @@
 <?php
 
-namespace Vormkracht10\LaravelGpt\Database\Factories;
+namespace Vormkracht10\Embedding\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 

@@ -1,17 +1,17 @@
 <?php
 
-namespace Vormkracht10\LaravelGpt\Jobs;
+namespace Vormkracht10\Embedding\Jobs;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\SerializesModels;
 
-class MakeGptable implements ShouldQueue
+class MakeEmbeddable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
     /**
-     * The models to be made gptable.
+     * The models to be made embeddable.
      *
      * @var \Illuminate\Database\Eloquent\Collection
      */
@@ -39,6 +39,6 @@ class MakeGptable implements ShouldQueue
             return;
         }
 
-        $this->models->first()->makeGptableUsing($this->models)->first()->gptableUsing()->update($this->models);
+        $this->models->first()->makeEmbeddableUsing($this->models)->first()->embeddableUsing()->update($this->models);
     }
 }

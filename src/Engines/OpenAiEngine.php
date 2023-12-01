@@ -1,6 +1,6 @@
 <?php
 
-namespace Vormkracht10\LaravelGpt\Engines;
+namespace Vormkracht10\Embedding\Engines;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
@@ -41,12 +41,12 @@ class OpenAiEngine implements EngineInterface
         }
 
         $objects = $models->map(function ($model) {
-            if (empty($contentString = $model->toGptableString())) {
+            if (empty($contentString = $model->toEmbeddableString())) {
                 return;
             }
 
             return [
-                'objectID' => $model->getGptKey(),
+                'objectID' => $model->getEmbedKey(),
                 'content' => $contentString,
             ];
         })->filter()->values()->all();
@@ -62,8 +62,8 @@ class OpenAiEngine implements EngineInterface
 
             $embed = $this->embed($object['content']);
 
-            DB::connection(config('gpt.database.connection'))
-                ->table(config('gpt.database.table'))
+            DB::connection(config('embed.database.connection'))
+                ->table(config('embed.database.table'))
                 ->updateOrInsert([
                     'foreign_id' => $object['objectID'],
                 ], [
@@ -82,9 +82,9 @@ class OpenAiEngine implements EngineInterface
     public function delete($models)
     {
         foreach ($models as $model) {
-            DB::connection(config('gpt.database.connection'))
-                ->table(config('gpt.database.table'))
-                ->where('foreign_id', $model->getGptKey())
+            DB::connection(config('embed.database.connection'))
+                ->table(config('embed.database.table'))
+                ->where('foreign_id', $model->getEmbedKey())
                 ->delete();
         }
     }
