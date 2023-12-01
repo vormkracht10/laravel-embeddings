@@ -6,7 +6,7 @@ return [
     'driver' => env('EMBED_DRIVER', 'openai'),
     'queue' => true,
     'database' => [
-        'connection' => env('EMBED_DATABASE_CONNECTION'),
+        'connection' => env('EMBED_DATABASE_CONNECTION', 'pgsql'),
         'table' => env('EMBED_DB_TABLE', 'embeddings'),
     ],
     'openai' => [
