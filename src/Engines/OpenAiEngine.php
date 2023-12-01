@@ -78,7 +78,7 @@ class OpenAiEngine implements EngineInterface
                     'foreign_id' => $object['objectID'],
                 ], [
                     'content' => $object['content'],
-                    'embedding' => '['.implode(',', $embed).']'
+                    'embedding' => '['.implode(',', $embed).']',
                 ]);
         }
     }
