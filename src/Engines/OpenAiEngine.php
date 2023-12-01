@@ -60,6 +60,16 @@ class OpenAiEngine implements EngineInterface
     {
         foreach ($objects as $object) {
 
+            $exists = DB::connection(config('embed.database.connection'))
+                ->table(config('embed.database.table'))
+                ->where('foreign_id', $object['objectID'])
+                ->where('content', $object['content'])
+                ->exists();
+
+            if ($exists) {
+                continue;
+            }
+
             $embed = $this->embed($object['content']);
 
             DB::connection(config('embed.database.connection'))
@@ -68,7 +78,7 @@ class OpenAiEngine implements EngineInterface
                     'foreign_id' => $object['objectID'],
                 ], [
                     'content' => $object['content'],
-                    'embedding' => '['.implode(',', $embed).']',
+                    'embedding' => '['.implode(',', $embed).']'
                 ]);
         }
     }
