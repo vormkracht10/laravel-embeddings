@@ -122,11 +122,11 @@ trait Embeddable
             ->orderBy(
                 $self->qualifyColumn($self->getEmbedKeyName())
             )
-            ->embedable($chunk);
+            ->embeddable($chunk);
     }
 
     /**
-     * Modify the collection of models being made embedable.
+     * Modify the collection of models being made embeddable.
      *
      * @return \Illuminate\Support\Collection
      */
@@ -136,7 +136,7 @@ trait Embeddable
     }
 
     /**
-     * Modify the query used to retrieve models when making all of the models embedable.
+     * Modify the query used to retrieve models when making all of the models embeddable.
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
@@ -146,13 +146,13 @@ trait Embeddable
     }
 
     /**
-     * Make the given model instance embedable.
+     * Make the given model instance embeddable.
      *
      * @return void
      */
-    public function embedable()
+    public function embeddable()
     {
-        $this->newCollection([$this])->embedable();
+        $this->newCollection([$this])->embeddable();
     }
 
     /**
@@ -164,7 +164,7 @@ trait Embeddable
     {
         $self = new static;
 
-        $self->embedableUsing()->flush($self);
+        $self->embeddableUsing()->flush($self);
     }
 
     /**
@@ -172,9 +172,9 @@ trait Embeddable
      *
      * @return void
      */
-    public function unembedable()
+    public function unembeddable()
     {
-        $this->newCollection([$this])->unembedable();
+        $this->newCollection([$this])->unembeddable();
     }
 
     /**
@@ -239,7 +239,7 @@ trait Embeddable
      *
      * @return string
      */
-    public function embedableAs()
+    public function embeddableAs()
     {
         return config('embed.prefix').$this->getTable();
     }
@@ -259,7 +259,7 @@ trait Embeddable
      *
      * @return mixed
      */
-    public function embedableUsing()
+    public function embeddableUsing()
     {
         return app(EngineManager::class)->engine();
     }
