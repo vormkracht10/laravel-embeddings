@@ -9,23 +9,23 @@ return new class extends Migration
 {
     public function __construct()
     {
-        $this->connection = config('embed.database.connection');
+        $this->connection = config('embeddings.database.connection');
     }
 
     public function up()
     {
-        if (Schema::connection($this->connection)->hasTable(config('embed.database.table'))) {
+        if (Schema::connection($this->connection)->hasTable(config('embeddings.database.table'))) {
             return;
         }
 
-        Schema::create(config('embed.database.table'), function (Blueprint $table) {
+        Schema::create(config('embeddings.database.table'), function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('foreign_id');
             $table->text('content');
             $table->timestamps();
         });
 
-        $tableName = config('embed.database.table');
+        $tableName = config('embeddings.database.table');
 
         DB::statement("ALTER TABLE {$tableName} ADD COLUMN embedding vector(1536) NULL;");
     }

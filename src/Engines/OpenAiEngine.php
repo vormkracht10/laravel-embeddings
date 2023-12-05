@@ -60,8 +60,8 @@ class OpenAiEngine implements EngineInterface
     {
         foreach ($objects as $object) {
 
-            $exists = DB::connection(config('embed.database.connection'))
-                ->table(config('embed.database.table'))
+            $exists = DB::connection(config('embeddings.database.connection'))
+                ->table(config('embeddings.database.table'))
                 ->where('foreign_id', $object['objectID'])
                 ->where('content', $object['content'])
                 ->exists();
@@ -72,8 +72,8 @@ class OpenAiEngine implements EngineInterface
 
             $embed = $this->embed($object['content']);
 
-            DB::connection(config('embed.database.connection'))
-                ->table(config('embed.database.table'))
+            DB::connection(config('embeddings.database.connection'))
+                ->table(config('embeddings.database.table'))
                 ->updateOrInsert([
                     'foreign_id' => $object['objectID'],
                 ], [
@@ -92,8 +92,8 @@ class OpenAiEngine implements EngineInterface
     public function delete($models)
     {
         foreach ($models as $model) {
-            DB::connection(config('embed.database.connection'))
-                ->table(config('embed.database.table'))
+            DB::connection(config('embeddings.database.connection'))
+                ->table(config('embeddings.database.table'))
                 ->where('foreign_id', $model->getEmbedKey())
                 ->delete();
         }

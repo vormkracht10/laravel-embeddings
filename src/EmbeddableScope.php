@@ -31,7 +31,7 @@ class EmbeddableScope implements Scope
         $builder->macro('embeddable', function (EloquentBuilder $builder, $chunk = null) {
             $embedKeyName = $builder->getModel()->getEmbedKeyName();
 
-            $builder->chunkById($chunk ?: config('embed.chunk.embeddable', 500), function ($models) {
+            $builder->chunkById($chunk ?: config('embeddings.chunk.embeddable', 500), function ($models) {
                 $models->filter->shouldBeEmbeddable()->embeddable();
 
                 event(new ModelsImported($models));
@@ -41,7 +41,7 @@ class EmbeddableScope implements Scope
         $builder->macro('unembeddable', function (EloquentBuilder $builder, $chunk = null) {
             $embedKeyName = $builder->getModel()->getEmbedKeyName();
 
-            $builder->chunkById($chunk ?: config('embed.chunk.unembeddable', 500), function ($models) {
+            $builder->chunkById($chunk ?: config('embeddings.chunk.unembeddable', 500), function ($models) {
                 $models->unembeddable();
 
                 event(new ModelsFlushed($models));
@@ -50,7 +50,7 @@ class EmbeddableScope implements Scope
 
         HasManyThrough::macro('embeddable', function ($chunk = null) {
             /** @var HasManyThrough $this */
-            $this->chunkById($chunk ?: config('embed.chunk.embeddable', 500), function ($models) {
+            $this->chunkById($chunk ?: config('embeddings.chunk.embeddable', 500), function ($models) {
                 $models->filter->shouldBeEmbeddable()->embeddable();
 
                 event(new ModelsImported($models));
@@ -59,7 +59,7 @@ class EmbeddableScope implements Scope
 
         HasManyThrough::macro('unembeddable', function ($chunk = null) {
             /** @var HasManyThrough $this */
-            $this->chunkById($chunk ?: config('embed.chunk.unembeddable', 500), function ($models) {
+            $this->chunkById($chunk ?: config('embeddings.chunk.unembeddable', 500), function ($models) {
                 $models->unembeddable();
 
                 event(new ModelsFlushed($models));

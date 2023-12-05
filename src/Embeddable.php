@@ -52,7 +52,7 @@ trait Embeddable
             return;
         }
 
-        if (! config('embed.queue')) {
+        if (! config('embeddings.queue')) {
             return $models->first()->makeEmbeddableUsing($models)->first()->makeEmbeddableUsing()->update($models);
         }
 
@@ -73,7 +73,7 @@ trait Embeddable
             return;
         }
 
-        if (! config('embed.queue')) {
+        if (! config('embeddings.queue')) {
             return $models->first()->embeddableUsing()->delete($models);
         }
 
@@ -112,7 +112,7 @@ trait Embeddable
     {
         $self = new static;
 
-        $softDelete = static::usesSoftDelete() && config('embed.soft_delete', false);
+        $softDelete = static::usesSoftDelete() && config('embeddings.soft_delete', false);
 
         $self->newQuery()
             ->when(true, function ($query) use ($self) {
@@ -243,7 +243,7 @@ trait Embeddable
      */
     public function embeddableAs()
     {
-        return config('embed.prefix').$this->getTable();
+        return config('embeddings.prefix').$this->getTable();
     }
 
     /**
@@ -273,7 +273,7 @@ trait Embeddable
      */
     public function syncWithEmbedUsing()
     {
-        return config('embed.queue.connection') ?: config('queue.default');
+        return config('embeddings.queue.connection') ?: config('queue.default');
     }
 
     /**
@@ -283,7 +283,7 @@ trait Embeddable
      */
     public function syncWithEmbedUsingQueue()
     {
-        return config('embed.queue.queue');
+        return config('embeddings.queue.queue');
     }
 
     /**

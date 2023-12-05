@@ -27,7 +27,7 @@ class EngineManager extends Manager
     {
         $this->ensureOpenAiIsConfigured();
 
-        return new OpenAiEngine(config('embed.openai.key'));
+        return new OpenAiEngine(config('embeddings.openai.key'));
     }
 
     /**
@@ -39,7 +39,7 @@ class EngineManager extends Manager
      */
     protected function ensureOpenAiIsConfigured()
     {
-        if (empty(config('embed.openai.key'))) {
+        if (empty(config('embeddings.openai.key'))) {
             throw new \Exception(__('Please fill the :config key.', ['config' => 'embed.openai.key']));
         }
     }
@@ -63,7 +63,7 @@ class EngineManager extends Manager
      */
     public function getDefaultDriver()
     {
-        if (is_null($driver = config('embed.driver'))) {
+        if (is_null($driver = config('embeddings.driver'))) {
             return 'openai';
         }
 
