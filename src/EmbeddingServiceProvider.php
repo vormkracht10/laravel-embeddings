@@ -14,7 +14,7 @@ class EmbeddingServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/embed.php', 'embed');
+        $this->mergeConfigFrom(__DIR__.'/../config/embeddings.php', 'embeddings');
     }
 
     /**
@@ -30,11 +30,11 @@ class EmbeddingServiceProvider extends ServiceProvider
             ]);
 
             $this->publishes([
-                __DIR__.'/../config/embed.php' => config_path('embed.php'),
-            ], 'laravel-embed-config');
+                __DIR__.'/../config/embeddings.php' => config_path('embeddings.php'),
+            ], 'laravel-embeddings-config');
             $this->publishes([
                 __DIR__.'/../database/migrations/' => database_path('migrations'),
-            ], 'laravel-embed-migrations');
+            ], 'laravel-embeddings-migrations');
         }
     }
 }
