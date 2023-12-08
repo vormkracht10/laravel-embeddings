@@ -40,7 +40,7 @@ class EngineManager extends Manager
     protected function ensureOpenAiIsConfigured()
     {
         if (empty(config('embeddings.openai.key'))) {
-            throw new \Exception(__('Please fill the :config key.', ['config' => 'embed.openai.key']));
+            throw new \Exception(__('Please fill the :config key.', ['config' => 'embeddings.openai.key']));
         }
     }
 

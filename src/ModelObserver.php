@@ -36,7 +36,7 @@ class ModelObserver
      */
     public function __construct()
     {
-        $this->usingSoftDeletes = Config::get('embed.soft_delete', false);
+        $this->usingSoftDeletes = Config::get('embeddings.soft_delete', false);
     }
 
     /**
