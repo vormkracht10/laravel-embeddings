@@ -18,14 +18,14 @@ composer require vormkracht10/laravel-embeddings
 You can publish and run the migrations with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-embeddings -migrations"
+php artisan vendor:publish --tag="laravel-embeddings-migrations"
 php artisan migrate
 ```
 
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-embeddings -config"
+php artisan vendor:publish --tag="laravel-embeddings-config"
 ```
 
 This is the contents of the published config file:
@@ -38,7 +38,7 @@ return [
 Optionally, you can publish the views using
 
 ```bash
-php artisan vendor:publish --tag="laravel-embeddings -views"
+php artisan vendor:publish --tag="laravel-embeddings-views"
 ```
 
 ## Usage
