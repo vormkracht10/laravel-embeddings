@@ -5,7 +5,7 @@ namespace Vormkracht10\Embedding\Engines;
 
 class NullEngine implements EngineInterface
 {
-    public function __construct(public string $key, public string $model = 'text-embedding-ada-002')
+    public function __construct()
     {
 
     }

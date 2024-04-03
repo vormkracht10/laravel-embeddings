@@ -3,7 +3,7 @@
 // config for Vormkracht10/Embeddings
 return [
     'enabled' => env('EMBEDDINGS_ENABLED', true),
-    'driver' => env('EMBEDDINGS_DRIVER', 'null'),
+    'driver' => env('EMBEDDINGS_DRIVER', 'null'), // 'null' / 'openai'
     'queue' => true,
     'database' => [
         'connection' => env('EMBEDDINGS_DATABASE_CONNECTION', 'pgsql'),
