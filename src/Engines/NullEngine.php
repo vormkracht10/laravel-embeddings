@@ -2,7 +2,6 @@
 
 namespace Vormkracht10\Embedding\Engines;
 
-
 class NullEngine implements EngineInterface
 {
     public function __construct()
