@@ -3,6 +3,7 @@
 namespace Vormkracht10\Embedding;
 
 use Illuminate\Support\Manager;
+use Vormkracht10\Embedding\Engines\NullEngine;
 use Vormkracht10\Embedding\Engines\OpenAiEngine;
 
 class EngineManager extends Manager
@@ -28,6 +29,11 @@ class EngineManager extends Manager
         $this->ensureOpenAiIsConfigured();
 
         return new OpenAiEngine(config('embeddings.openai.key'));
+    }
+
+    public function createNullDriver()
+    {
+        return new NullEngine;
     }
 
     /**
