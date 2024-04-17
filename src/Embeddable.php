@@ -78,8 +78,8 @@ trait Embeddable
         }
 
         dispatch(new Embed::$removeFromEmbedJob($models))
-            ->onQueue($models->first()->syncWitEmbedUsingQueue())
-            ->onConnection($models->first()->syncWitEmbedUsing());
+            ->onQueue($models->first()->syncWithEmbedUsingQueue())
+            ->onConnection($models->first()->syncWithEmbedUsing());
     }
 
     /**
