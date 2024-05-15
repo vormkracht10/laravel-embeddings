@@ -60,15 +60,31 @@ return [
 ];
 ```
 
-Optionally, you can publish the views using
+Fill in the following env variables
 
-```bash
-php artisan vendor:publish --tag="laravel-embeddings-views"
+```.env
+EMBEDDINGS_DRIVER=openai
+OPENAI_API_KEY=
 ```
 
 ## Usage
 
 ```php
+// Add the Embeddable trait to your Model(s).
+class MyModel {
+    use Embeddable {
+        \Laravel\Scout\Searchable::usesSoftDelete insteadof \Vormkracht10\Embedding\Embeddable;
+    }
+}
+
+// You can override the embeddable content
+class MyModel {
+    // ...
+    public function toEmbeddableString()
+    {
+        return strip_tags(implode(', ', $this->toArray()));
+    }
+}
 
 ```
 
