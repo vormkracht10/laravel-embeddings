@@ -53,7 +53,7 @@ trait Embeddable
         }
 
         if (! config('embeddings.queue')) {
-            return $models->first()->makeEmbeddableUsing($models)->first()->makeEmbeddableUsing()->update($models);
+            return $models->first()->makeEmbeddableUsing($models)->first()->embeddableUsing()->update($models);
         }
 
         dispatch((new Embed::$makeEmbeddableJob($models))
