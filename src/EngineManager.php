@@ -69,8 +69,9 @@ class EngineManager extends Manager
      */
     public function getDefaultDriver()
     {
-        if (is_null($driver = config('embeddings.driver'))) {
-            return 'openai';
+        $driver = config('embeddings.driver');
+        if (is_null($driver)) {
+            return 'null';
         }
 
         return $driver;
