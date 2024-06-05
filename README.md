@@ -41,6 +41,7 @@ return [
     ],
     'openai' => [
         'key' => env('OPENAI_API_KEY'),
+        'model' => env('OPENAI_EMBEDDING_MODEL', 'text-embedding-ada-002')
     ],
 
     /*
