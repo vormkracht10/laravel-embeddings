@@ -28,7 +28,7 @@ class EngineManager extends Manager
     {
         $this->ensureOpenAiIsConfigured();
 
-        return new OpenAiEngine(config('embeddings.openai.key'));
+        return new OpenAiEngine(config('embeddings.openai.key'), config('embeddings.openai.model', 'text-embedding-ada-002'));
     }
 
     public function createNullDriver()
