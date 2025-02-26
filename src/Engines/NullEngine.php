@@ -4,10 +4,7 @@ namespace Vormkracht10\Embedding\Engines;
 
 class NullEngine implements EngineInterface
 {
-    public function __construct()
-    {
-
-    }
+    public function __construct() {}
 
     public function embed($content): array
     {
@@ -20,9 +17,7 @@ class NullEngine implements EngineInterface
      * @param  \Illuminate\Database\Eloquent\Collection  $models
      * @return void
      */
-    public function update($models)
-    {
-    }
+    public function update($models) {}
 
     /**
      * Remove the given model from the index.
@@ -30,7 +25,5 @@ class NullEngine implements EngineInterface
      * @param  \Illuminate\Database\Eloquent\Collection  $models
      * @return void
      */
-    public function delete($models)
-    {
-    }
+    public function delete($models) {}
 }

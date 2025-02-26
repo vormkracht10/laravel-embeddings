@@ -10,10 +10,7 @@ class OpenAiEngine implements EngineInterface
 {
     private $apiUrl = 'https://api.openai.com/v1';
 
-    public function __construct(public string $key, public string $model = 'text-embedding-ada-002')
-    {
-
-    }
+    public function __construct(public string $key, public string $model = 'text-embedding-ada-002') {}
 
     public function embed($content): array
     {
