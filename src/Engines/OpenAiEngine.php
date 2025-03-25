@@ -56,14 +56,13 @@ class OpenAiEngine implements EngineInterface
     private function saveObjects($objects)
     {
         foreach ($objects as $object) {
-dd($objects);
+
             if ((int) config('embeddings.openai.chunk') > 0) {
                 $chunks = str_split($object['content'], (int) config('embeddings.openai.chunk'));
             }
             else {
                 $chunks = [$object['content']];
             }
-
             if (count($chunks) > 1) {
                 DB::connection(config('embeddings.database.connection'))
                     ->table(config('embeddings.database.table'))
