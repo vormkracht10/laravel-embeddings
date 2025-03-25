@@ -56,27 +56,51 @@ class OpenAiEngine implements EngineInterface
     private function saveObjects($objects)
     {
         foreach ($objects as $object) {
-
-            $exists = DB::connection(config('embeddings.database.connection'))
-                ->table(config('embeddings.database.table'))
-                ->where('foreign_id', $object['objectID'])
-                ->where('content', $object['content'])
-                ->exists();
-
-            if ($exists) {
-                continue;
+            if ((int) config('embeddings.openai.chunk') > 0) {
+                $chunks = str_split($object['content'], (int) config('embeddings.openai.chunk'));
+            } else {
+                $chunks = [$object['content']];
+            }
+            if (count($chunks) > 1) {
+                DB::connection(config('embeddings.database.connection'))
+                    ->table(config('embeddings.database.table'))
+                    ->where('foreign_id', $object['objectID'])
+                    ->delete();
             }
 
-            $embed = $this->embed($object['content']);
+            foreach ($chunks as $chunk) {
+                $exists = DB::connection(config('embeddings.database.connection'))
+                    ->table(config('embeddings.database.table'))
+                    ->where('foreign_id', $object['objectID'])
+                    ->where('content', $chunk)
+                    ->exists();
 
-            DB::connection(config('embeddings.database.connection'))
-                ->table(config('embeddings.database.table'))
-                ->updateOrInsert([
-                    'foreign_id' => $object['objectID'],
-                ], [
-                    'content' => $object['content'],
-                    'embedding' => '['.implode(',', $embed).']',
-                ]);
+                if ($exists) {
+                    continue;
+                }
+
+                $embed = $this->embed($chunk);
+
+                if (count($chunks) > 1) {
+                    // Dont update previous chunks
+                    DB::connection(config('embeddings.database.connection'))
+                        ->table(config('embeddings.database.table'))
+                        ->insert([
+                            'foreign_id' => $object['objectID'],
+                            'content' => $chunk,
+                            'embedding' => '['.implode(',', $embed).']',
+                        ]);
+                } else {
+                    DB::connection(config('embeddings.database.connection'))
+                        ->table(config('embeddings.database.table'))
+                        ->updateOrInsert([
+                            'foreign_id' => $object['objectID'],
+                        ], [
+                            'content' => $chunk,
+                            'embedding' => '['.implode(',', $embed).']',
+                        ]);
+                }
+            }
         }
     }
 
