@@ -56,11 +56,10 @@ class OpenAiEngine implements EngineInterface
     private function saveObjects($objects)
     {
         foreach ($objects as $object) {
-dd($objects);
+            dd($objects);
             if ((int) config('embeddings.openai.chunk') > 0) {
                 $chunks = str_split($object['content'], (int) config('embeddings.openai.chunk'));
-            }
-            else {
+            } else {
                 $chunks = [$object['content']];
             }
 
@@ -93,8 +92,7 @@ dd($objects);
                             'content' => $chunk,
                             'embedding' => '['.implode(',', $embed).']',
                         ]);
-                }
-                else {
+                } else {
                     DB::connection(config('embeddings.database.connection'))
                         ->table(config('embeddings.database.table'))
                         ->updateOrInsert([
