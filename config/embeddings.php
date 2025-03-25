@@ -12,6 +12,8 @@ return [
     'openai' => [
         'key' => env('OPENAI_API_KEY'),
         'model' => env('OPENAI_EMBEDDING_MODEL', 'text-embedding-ada-002'),
+        // Leave 0 to not chunk. If content is exceeding the cunk size, all embeddings will be re-embedded. Might increase costs!
+        'chunk' => 0, // This is the maximum number of characters that can be sent to OpenAI at once (8191 * 4 would be a good value)
     ],
 
     /*
